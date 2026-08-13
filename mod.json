@@ -1,0 +1,23 @@
+{
+  "geode": "4.0.0",
+  "gd": {
+    "win": "2.2081",
+    "android": "2.2081",
+    "mac": "2.2081",
+    "ios": "2.2081"
+  },
+  "id": "stereo.madness.autoplay",
+  "name": "Stereo Madness AutoPlay",
+  "version": "1.0.0",
+  "developer": "ChatGPT",
+  "description": "Experimental AutoPlay controller for Stereo Madness.",
+  "repository": "https://github.com/geode-sdk/geode",
+  "settings": {
+    "enabled": {
+      "name": "Enable AutoPlay",
+      "description": "Enable the experimental Stereo Madness AutoPlay controller.",
+      "type": "bool",
+      "default": false
+    }
+  }
+}
