@@ -49,32 +49,6 @@ class $modify(NoclipPlayerObject, PlayerObject) {
     void collidedWithSlope(
         float dt,
         GameObject* object,
-        bool skipPre
-    ) {
-        if (Mod::get()->getSettingValue<bool>("enabled"))
-            return;
-
-        PlayerObject::collidedWithSlope(
-            dt,
-            object,
-            skipPre
-        );
-    }
-
-    void collidedWithSlopeInternal(
-        float dt,
-        GameObject* object,
-        bool forced
-    ) {
-        if (Mod::get()->getSettingValue<bool>("enabled"))
-            return;
-
-        PlayerObject::collidedWithSlopeInternal(
-            dt,
-            object,
-            forced
-        );
-    }
-};
+        bool 
 
 
