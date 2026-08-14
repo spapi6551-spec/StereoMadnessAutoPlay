@@ -1,26 +1,23 @@
 {
-    "geode": "5.9.0",
-    "version": "1.0.0",
-    "id": "stereo.madness.noclip",
-    "name": "Stereo Madness Noclip",
+    "geode": "v5.9.0",
+    "gd": {
+        "android": "2.2081"
+    },
+    "id": "chatgpt.noclip",
+    "name": "Noclip ON/OFF",
+    "version": "v1.0.0",
     "developer": "ChatGPT",
-    "description": "Noclip activable y desactivable.",
-    "repository": "",
-    "dependencies": {},
-    "links": {},
+    "description": "Activa o desactiva el noclip.",
     "tags": [
+        "cheat",
         "gameplay"
     ],
     "settings": {
-        "noclip": {
-            "name": "Noclip",
-            "description": "Activa o desactiva el noclip.",
+        "enabled": {
             "type": "bool",
+            "name": "Noclip",
+            "description": "Activa o desactiva el Noclip.",
             "default": false
         }
-    },
-    "platforms": [
-        "android64",
-        "win"
-    ]
+    }
 }
