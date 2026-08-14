@@ -77,13 +77,4 @@ class $modify(NoclipPlayerObject, PlayerObject) {
     }
 };
 
-No cambies el "mod.json" que ya te compiló en verde. Este código utiliza el ajuste que ya tienes, ""enabled"".
 
-Después:
-
-Commit changes → Actions → espera 🟢 → descarga el nuevo ".geode" → reemplaza el anterior.
-
-Con Noclip OFF → juego normal.
-Con Noclip ON → las funciones de colisión principales devuelven inmediatamente y el jugador debería poder atravesar bloques/obstáculos.
-
-Si el build vuelve a rojo, no cambies nada: mándame la captura del error.
