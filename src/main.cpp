@@ -1,6 +1,5 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/PlayLayer.hpp>
-#include <Geode/modify/PlayerObject.hpp>
 
 using namespace geode::prelude;
 
@@ -8,31 +7,8 @@ using namespace geode::prelude;
 // quieres que se recuerde entre partidas)
 bool g_noclipEnabled = false;
 
-// Hook al PlayerObject: interceptamos la colisión con obstáculos/pinchos
-class $modify(NoclipPlayer, PlayerObject) {
-    void queueInMainThread(std::function<void()> func) {
-        PlayerObject::queueInMainThread(func);
-    }
-
-    // checkCollisions es lo que decide si el jugador muere al tocar un objeto
-    void checkCollisions(PlayerObject* player, float dt) {
-        if (g_noclipEnabled) {
-            // Con noclip activo, no dejamos que se procesen las colisiones letales
-            return;
-        }
-        PlayerObject::checkCollisions(player, dt);
-    }
-
-    // Refuerzo extra: si algo llega a llamar a la muerte del jugador, la cancelamos
-    void playerDestroyed(bool p0) {
-        if (g_noclipEnabled) {
-            return;
-        }
-        PlayerObject::playerDestroyed(p0);
-    }
-};
-
-// Hook al PlayLayer: aquí añadimos el botón ON/OFF en el hub
+// Hook al PlayLayer: interceptamos destroyPlayer (se llama cuando el jugador
+// choca con algo que lo mataría) y el botón ON/OFF del hub
 class $modify(NoclipPlayLayer, PlayLayer) {
     bool init(GJGameLevel* level, bool useReplay, bool dontCreateObjects) {
         if (!PlayLayer::init(level, useReplay, dontCreateObjects)) return false;
@@ -57,12 +33,20 @@ class $modify(NoclipPlayLayer, PlayLayer) {
         return true;
     }
 
+    // destroyPlayer es lo que se llama cuando el jugador choca con algo
+    // que normalmente lo mataría (pinchos, bloques, etc.)
+    void destroyPlayer(PlayerObject* player, GameObject* obj) {
+        if (g_noclipEnabled) {
+            // Con noclip activo, ignoramos la destrucción del jugador
+            return;
+        }
+        PlayLayer::destroyPlayer(player, obj);
+    }
+
     void onToggleNoclip(CCObject* sender) {
         g_noclipEnabled = !g_noclipEnabled;
-
-        auto toggler = static_cast<CCMenuItemToggler*>(sender);
         log::info("Noclip {}", g_noclipEnabled ? "activado" : "desactivado");
     }
 };
 
-
+    
