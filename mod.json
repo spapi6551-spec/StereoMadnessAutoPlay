@@ -1,24 +1,13 @@
 {
-    "geode": "5.9.0",
+    "geode": "v5.9.0",
     "gd": {
-        "android": "2.2081",
-        "win": "2.2081"
+        "win": "2.2074",
+        "android": "2.2074"
     },
-    "id": "chatgpt.noclip",
-    "name": "Noclip Toggle",
     "version": "v1.0.0",
-    "developer": "ChatGPT",
-    "description": "Toggle noclip ON/OFF",
-    "tags": [
-        "gameplay",
-        "cheat"
-    ],
-    "settings": {
-        "enabled": {
-            "type": "bool",
-            "name": "Noclip",
-            "description": "Enable or disable noclip",
-            "default": false
-        }
-    }
+    "id": "com.luis1234ash.botonseo",
+    "name": "botonseo",
+    "developer": "luis1234ash",
+    "description": "Hub con botón ON/OFF para activar y desactivar noclip",
+    "early-load": false
 }
